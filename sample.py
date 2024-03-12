@@ -10,7 +10,7 @@ from impedance.visualization import plot_nyquist
 import matplotlib.pyplot as plt
 
 def generate_barcode(cell_id):
-    # Generate barcode using Code128 format
+  
     code128 = barcode.get_barcode_class('code128')
     barcode_instance = code128(cell_id, writer=ImageWriter())
     barcode_path = f"{cell_id}.png"  # Save barcode with Cell_ID as filename
@@ -22,21 +22,21 @@ def upload_image_and_display():
     file_path = filedialog.askopenfilename()
     if file_path:
         try:
-            # Display the selected image in the graph window
+        
             image = Image.open(file_path)
             image = image.resize((200, 200))  # Resize the image if needed
             photo = ImageTk.PhotoImage(image)
 
-            # Update the image in the label
+       
             label_image.config(image=photo)
             label_image.image = photo
 
-            # Generate unique Cell_ID
+       
             cell_id = str(uuid.uuid4().int)[:10]
             cell_id_label.config(text=f"Cell ID: {cell_id}")
             cell_id_label.pack()
 
-            # Generate barcode
+         
             barcode_path = generate_barcode(cell_id)
             barcode_label.config(text=f"Barcode saved as: {barcode_path}")
             barcode_label.pack()
