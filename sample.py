@@ -77,13 +77,13 @@ def upload_csv_and_process():
         if frequencies is not None and Z is not None:
             fit_and_plot(frequencies, Z)
 
-# Create a tkinter window
+
 root = tk.Tk()
 root.title("Nyquist Plot")
 root.configure(bg="black")
 
 
-# Add a heading label with larger font size and colored background
+
 heading_label = tk.Label(root, text="Simple Battery Checkup", font = ("Times New Roman", 80), fg="white",bg="black")
 heading_label.pack(pady=10)  # Add some padding to the top
 paragraph_text = "A web interface for displaying battery cell information. Users can upload a representative image of the cell and automatically generate a unique 10-digit Cell_ID and Bar Code for identification. Meta information such as cell condition, electrical parameters, and data upload options are provided. The webpage utilizes a Python library to transform the data and generate Bode plots, an Equivalent Circuit Model, and State-of-the-Health (SoH) indicators, enhancing data visualization and analysis for users."
@@ -95,23 +95,23 @@ label_image.pack(side="left", padx=20, pady=(50, 10))
 cell_id_label = tk.Label(root, bg="black", fg="white")
 cell_id_label.pack(side="left", padx=(10, 10), pady=(0, 10), anchor="nw")
 
-# Label to display Barcode path
+
 barcode_label = tk.Label(root, bg="black", fg="white")
 barcode_label.pack(side="left", padx=(10, 10), pady=(0,10), anchor="nw")
 your_text_label = tk.Label(root, text=" upload your battery image", font=("Times New Roman", 16), fg="white", bg="black", pady=10)
 your_text_label.pack()
 
-# Create a button to upload an image and display it
+
 upload_image_button = tk.Button(root, text="Upload Image", command=upload_image_and_display, bg="blue", fg="white", padx=10, pady=5, font=("Times New Roman", 12, "bold"), width=20, height=2)
 upload_image_button.pack()
 
 def open_form_window():
-    # Create a new tkinter window for the form
+
     form_window = tk.Toplevel(root)
     form_window.title("Battery Information Form")
     form_window.configure(bg="black")
 
-    # Create labels and entry fields for the form
+    
     form_entries = [
         ("Cell Condition (New or Recycled):", ""),
         ("Manufacturer:", ""),
@@ -135,10 +135,10 @@ def open_form_window():
         entry.insert(0, default_value)
         entry.grid(row=row, column=1, padx=10, pady=5)
 
-        # Append entry widget to the entries list
+        
         entries.append(entry)
 
-    # Function to get form data
+ 
     def get_form_data():
         form_data = {}
         for entry, (label_text, _) in zip(entries, form_entries):
@@ -146,32 +146,23 @@ def open_form_window():
         print(form_data)  # Just for testing, you can replace this with your desired action
         form_window.destroy()  # Close the form window
 
-    # Create a button to submit the form data
+   
     submit_button = tk.Button(form_window, text="Submit", command=get_form_data)
     submit_button.grid(row=len(form_entries), columnspan=2, pady=(10, 20))
 
 def open_battery_info_form():
-    # Create a button to open the form window
+   
     your_text_label = tk.Label(root, text=" fill your battery details", font=("Times New Roman", 16), fg="white", bg="black", pady=10)
     your_text_label.pack()
     open_form_button = tk.Button(root, text="Open Battery Information Form", command=open_form_window, bg="blue", fg="white", padx=10, pady=5, font=("Times New Roman", 12, "bold"), width=20, height=2)
     open_form_button.pack(pady=10)
     
-# Call the function to create the button
+
 open_battery_info_form()
 your_text_label = tk.Label(root, text=" upload your battery frequency and impedance in csv file format", font=("Times New Roman", 16), fg="white", bg="black", pady=10)
 your_text_label.pack()
-# Create a button to upload CSV file and process data
+
 upload_csv_button = tk.Button(root, text="Upload CSV and Process", command=upload_csv_and_process, bg="blue", fg="white", padx=10, pady=5, font=("Times New Roman", 12, "bold"), width=20, height=2)
 upload_csv_button.pack()
 
-# Label to display the uploaded image
-# Label to display the uploaded image
-
-  # Adjusted padx and pady values
-
-
-
-
-# Start the tkinter event loop
 root.mainloop()
